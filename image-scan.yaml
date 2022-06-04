@@ -1,0 +1,14 @@
+name: Build and scan Docker Image
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag stingray92/vlctechfest:latest
+    - name: Scan image
+      uses: sysdiglabs/scan-action@v1
+      with:
+        image-tag: "stingray92/vlctechfest:latest"
+        sysdig-secure-token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
