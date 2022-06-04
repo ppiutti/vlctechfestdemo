@@ -13,4 +13,6 @@ jobs:
         image-tag: "vlctechfest:latest"
         sysdig-secure-url: https://eu1.app.sysdig.com/
         sysdig-secure-token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
+        input-type: docker-daemon
+        run-as-user: root
 
