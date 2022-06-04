@@ -6,11 +6,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file dummy-vuln-app-master/Dockerfile --tag stingray92/vlctechfest:latest     
+      run: docker build . --file dummy-vuln-app-master/Dockerfile --tag vlctechfest:latest     
     - name: Sysdig Secure Inline Scan
       uses: sysdiglabs/scan-action@v3.4.0
       with:
-        image-tag: "stingray92/vlctechfest:latest"
+        image-tag: "vlctechfest:latest"
         sysdig-secure-url: https://eu1.app.sysdig.com/
         sysdig-secure-token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
 
