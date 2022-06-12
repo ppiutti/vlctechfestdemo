@@ -1,5 +1,11 @@
 name: Build and scan Docker Image
 on: [push]
+# Env variable
+env:
+  DOCKER_USER: ${{secrets.DOCKER_USER}}
+  DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+  REPO_NAME: ${{secrets.REPO_NAME}}
+  
 jobs:
   build:
     runs-on: ubuntu-latest
