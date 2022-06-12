@@ -23,14 +23,14 @@ jobs:
       run: docker build . --file busybox/Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }} # Good image
 #     run: docker build . --file dummy-vuln-app-master/Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }} # Bad image
 
-    - name: Sysdig Secure Inline Scan
-      uses: sysdiglabs/scan-action@v3.4.0
-      with:
-        image-tag: $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}
-        sysdig-secure-url: https://eu1.app.sysdig.com/
-        sysdig-secure-token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
-        input-type: docker-daemon
-        run-as-user: root
+#    - name: Sysdig Secure Inline Scan
+#      uses: sysdiglabs/scan-action@v3.4.0
+#      with:
+#        image-tag: $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}
+#        sysdig-secure-url: https://eu1.app.sysdig.com/
+#        sysdig-secure-token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
+#        input-type: docker-daemon
+#        run-as-user: root
         
     - name: docker login
       run: | # log into docker hub account
