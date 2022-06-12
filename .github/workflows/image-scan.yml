@@ -3,10 +3,8 @@ on: [push]
 # Env variable
 env:
   DOCKER_USER: stingray92
-# DOCKER_USER: ${{secrets.DOCKER_USER}}
   DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
   REPO_NAME: vlctechfest
-# REPO_NAME: ${{secrets.REPO_NAME}}
   
 jobs:
   build:
