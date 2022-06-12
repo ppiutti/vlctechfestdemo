@@ -19,7 +19,7 @@ jobs:
       run: echo "::set-output name=date::$(date +'%Y-%m-%d--%M-%S')"
           
     - name: Build the Docker image
-      run: echo "TAG=$DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}" >> GITHUB_ENV && docker build . --file busybox/Dockerfile --tag $TAG
+      run: TAG=$DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }} && echo $TAG >> GITHUB_ENV && docker build . --file busybox/Dockerfile --tag $TAG
       #run: docker build . --file busybox/Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }} # Good image
 #     run: docker build . --file dummy-vuln-app-master/Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }} # Bad image
       
