@@ -19,15 +19,13 @@ jobs:
       run: echo "::set-output name=date::$(date +'%Y-%m-%d--%M-%S')"
           
     - name: Build the Docker image
-
-      run: docker build . --file busybox/Dockerfile --tag ${{ DOCKER_USER }}/{{ $REPO_NAME }}:${{ steps.date.outputs.date }}
-#     run: docker build . --file busybox/Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }} # Good image
+      run: docker build . --file busybox/Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }} # Good image
 #     run: docker build . --file dummy-vuln-app-master/Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }} # Bad image
       
     - name: Sysdig Secure Inline Scan
       uses: sysdiglabs/scan-action@v3.4.0
       with:
-        image-tag: $TAG
+        image-tag: ${{ DOCKER_USER }}/{{ $REPO_NAME }}:${{ steps.date.outputs.date }}
         #image-tag: stingray92/vlctechfest:${{ steps.date.outputs.date }}
         sysdig-secure-url: https://eu1.app.sysdig.com/
         sysdig-secure-token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
