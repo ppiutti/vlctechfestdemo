@@ -12,7 +12,8 @@ jobs:
       
     - name: Build the Docker image
 #     run: docker build . --file dummy-vuln-app-master/Dockerfile --tag vlctechfest:latest
-      run: docker build . --file busybox/Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }} # Good image
+      run: docker build . --file busybox/Dockerfile --tag $DOCKER_USER/$REPO_NAME:latest
+#     run: docker build . --file busybox/Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }} # Good image
 #     run: docker build . --file dummy-vuln-app-master/Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }} # Bad image
 
     - name: Sysdig Secure Inline Scan
